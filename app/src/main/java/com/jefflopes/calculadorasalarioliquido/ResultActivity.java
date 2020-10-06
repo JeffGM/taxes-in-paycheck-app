@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -48,5 +49,9 @@ public class ResultActivity extends AppCompatActivity {
 
         TextView deductionsTextView = findViewById(R.id.deductionsPercentageLabel);
         deductionsTextView.setText(decimalFormat.format(salaryInfo.getDeductionsInPercentage()) + "%");
+    }
+
+    public void goBack(View view) {
+        finish();
     }
 }
