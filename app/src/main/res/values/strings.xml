@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Calculadora Salario Liquido</string>
-    <string name="calculadora_de_sal_rio_l_quido">Calculadora de Salário Líquido</string>
+    <string name="calculadora_de_salario_liquido">Calculadora de Salário Líquido</string>
     <string name="zero_money_placeholder">0.00</string>
     <string name="zero_percentage_placeholder">0%</string>
     <string name="salario_bruto">Salário Bruto</string>
@@ -11,4 +11,8 @@
     <string name="salario_liquido">Salário Líquido</string>
     <string name="descontos">Descontos</string>
     <string name="voltar">Voltar</string>
+    <string name="currency_brl_sign">R$</string>
+    <string name="numero_de_dependentes">Número de Dependentes</string>
+    <string name="calcular">Calcular</string>
+    <string name="zero_placeholder">0</string>
 </resources>
