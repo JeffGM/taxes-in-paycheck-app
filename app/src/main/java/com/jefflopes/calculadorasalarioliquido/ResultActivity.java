@@ -2,13 +2,47 @@ package com.jefflopes.calculadorasalarioliquido;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.jefflopes.calculadorasalarioliquido.data.SalaryInfo;
+import com.jefflopes.calculadorasalarioliquido.utils.LiquidSalaryHelper;
 
 public class ResultActivity extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+
+        Intent calculateIntent = getIntent();
+        String serializedObject = calculateIntent.getStringExtra("SALARY_INFO");
+        SalaryInfo salaryInfo = (new Gson()).fromJson(serializedObject, SalaryInfo.class);
+
+        LiquidSalaryHelper liquidSalaryHelper = new LiquidSalaryHelper();
+
+        salaryInfo = liquidSalaryHelper.calculateLiquidSalary(salaryInfo);
+
+        TextView bruteSalaryTextView = findViewById(R.id.bruteSalaryLabel);
+        bruteSalaryTextView.setText("R$" + salaryInfo.bruteSalary);
+
+        TextView inssTextView = findViewById(R.id.INSSLabel);
+        inssTextView.setText("R$" + salaryInfo.inss);
+
+        TextView irrfTextView = findViewById(R.id.IRRFLabel);
+        irrfTextView.setText("R$" + salaryInfo.irrf);
+
+        TextView otherDiscountsTextView = findViewById(R.id.OtherDiscountsLabel);
+        otherDiscountsTextView.setText("R$" + salaryInfo.otherDeductions);
+
+        TextView liquidSalaryTextView = findViewById(R.id.liquidSalaryLabel);
+        liquidSalaryTextView.setText("R$" + salaryInfo.liquidSalary);
+
+        TextView deductionsTextView = findViewById(R.id.deductionsPercentageLabel);
+        deductionsTextView.setText(salaryInfo.getDeductionsInPercentage() + "%");
     }
 }
