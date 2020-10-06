@@ -2,11 +2,13 @@ package com.jefflopes.calculadorasalarioliquido;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 import com.google.gson.Gson;
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             calculateIntent.putExtra("SALARY_INFO", (new Gson()).toJson(salaryInfo));
             startActivity(calculateIntent);
         } else {
-            //Display a toast
+            Toast.makeText(this, R.string.without_salary_input, Toast.LENGTH_SHORT).show();
         }
 
     }

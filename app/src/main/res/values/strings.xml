@@ -15,4 +15,5 @@
     <string name="numero_de_dependentes">Número de Dependentes</string>
     <string name="calcular">Calcular</string>
     <string name="zero_placeholder">0</string>
+    <string name="without_salary_input">Por favor, insira o salário bruto</string>
 </resources>
