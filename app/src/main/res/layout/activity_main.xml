@@ -28,7 +28,7 @@
         android:layout_marginTop="84dp"
         android:layout_marginEnd="60dp"
         android:text="@string/currency_brl_sign"
-        app:layout_constraintEnd_toStartOf="@+id/editText2"
+        app:layout_constraintEnd_toStartOf="@+id/bruteSalaryEditText"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:layout_marginTop="115dp"
         android:layout_marginEnd="52dp"
         android:text="@string/currency_brl_sign"
-        app:layout_constraintEnd_toStartOf="@+id/editText"
+        app:layout_constraintEnd_toStartOf="@+id/otherDeductionsEditText"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/otherDeductionsEditText"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
@@ -82,11 +82,11 @@
         android:inputType="numberDecimal"
         android:textAlignment="textEnd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintTop_toBottomOf="@+id/dependentNumberEditText"
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/dependentNumberEditText"
         android:layout_width="150dp "
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
@@ -96,11 +96,11 @@
         android:inputType="number"
         android:textAlignment="textEnd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/bruteSalaryEditText"
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/bruteSalaryEditText"
         android:layout_width="150dp "
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"

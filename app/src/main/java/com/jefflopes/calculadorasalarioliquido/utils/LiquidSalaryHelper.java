@@ -5,7 +5,7 @@ import android.util.Range;
 
 import androidx.annotation.RequiresApi;
 
-import com.jefflopes.calculadorasalarioliquido.data.CalculationResult;
+import com.jefflopes.calculadorasalarioliquido.data.SalaryInfo;
 import com.jefflopes.calculadorasalarioliquido.data.TributeTuple;
 
 
@@ -84,13 +84,14 @@ public class LiquidSalaryHelper {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public CalculationResult calculateLiquidSalary(Double salary, Integer numDependents, Double otherDiscounts) {
-        Double inss = this.calculateINSS(salary);
-        Double irrf = this.calculateIRRF(salary, inss, numDependents);
+    public SalaryInfo calculateLiquidSalary(SalaryInfo salaryInfo) {
+        Double inss = this.calculateINSS(salaryInfo.bruteSalary);
+        Double irrf = this.calculateIRRF(salaryInfo.bruteSalary, inss, salaryInfo.numberOfDependents);
 
-        Double liquidSalary = salary - inss - irrf - otherDiscounts;
-        
-        return new CalculationResult(liquidSalary, (liquidSalary/salary) * 100,
-                                    inss, irrf, otherDiscounts);
+        salaryInfo.liquidSalary = salaryInfo.bruteSalary - inss - irrf - salaryInfo.otherDeductions;
+        salaryInfo.inss = inss;
+        salaryInfo.irrf = irrf;
+
+        return salaryInfo;
     }
 }
