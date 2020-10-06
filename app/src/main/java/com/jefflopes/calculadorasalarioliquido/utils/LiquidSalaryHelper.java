@@ -20,7 +20,8 @@ public class LiquidSalaryHelper {
     private TributeTuple[] irrfQuotas = {new TributeTuple(0.0, 0.00),
             new TributeTuple(0.075, 142.80),
             new TributeTuple(0.15, 354.80),
-            new TributeTuple(0.225, 636.13)};
+            new TributeTuple(0.225, 636.13),
+            new TributeTuple(0.275, 869.36)};
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public Double calculateINSS(Double salary) {
@@ -50,6 +51,36 @@ public class LiquidSalaryHelper {
         return inss > maxInssContributionLimit ? maxInssContributionLimit : inss;
     }
 
-    public Double calculateIRRF(Double salary, Integer numDependents) {}
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public Double calculateIRRF(Double salary, Double inss, Integer numDependents) {
+        Double applicableAliquot, applicableDeduction, irrf;
+        Double calcBase = salary - inss - (numDependents * 189.59);
+
+        Range<Double> firstAliquotRange = Range.create(0.00, 1903.98);
+        Range<Double> secondAliquotRange = Range.create(1903.99, 2826.65);
+        Range<Double> thirdAliquotRange = Range.create(2826.65, 3751.05);
+        Range<Double> fourthAliquotRange = Range.create(3751.05, 4664.68);
+
+        if(firstAliquotRange.contains(calcBase)) {
+            applicableAliquot = this.irrfQuotas[0].aliquot;
+            applicableDeduction = this.irrfQuotas[0].deduction;
+        } else if(secondAliquotRange.contains(calcBase)) {
+            applicableAliquot = this.irrfQuotas[1].aliquot;
+            applicableDeduction = this.irrfQuotas[1].deduction;
+        } else if(thirdAliquotRange.contains(calcBase)) {
+            applicableAliquot = this.irrfQuotas[2].aliquot;
+            applicableDeduction = this.irrfQuotas[2].deduction;
+        } else if(fourthAliquotRange.contains(calcBase)) {
+            applicableAliquot = this.irrfQuotas[3].aliquot;
+            applicableDeduction = this.irrfQuotas[3].deduction;
+        } else {
+            applicableAliquot = this.irrfQuotas[4].aliquot;
+            applicableDeduction = this.irrfQuotas[4].deduction;
+        }
+
+        irrf = (applicableAliquot * salary - applicableDeduction);
+
+        return irrf;
+    }
     public CalculationResult calculateLiquidSalary(Double salary, Integer numDependents, Double otherDiscounts) {}
 }
