@@ -151,7 +151,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/deductionsPercentageLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="504dp"
@@ -165,7 +165,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/liquidSalaryLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="450dp"
