@@ -78,7 +78,7 @@ public class LiquidSalaryHelper {
             applicableDeduction = this.irrfQuotas[4].deduction;
         }
 
-        irrf = (applicableAliquot * salary - applicableDeduction);
+        irrf = (applicableAliquot * calcBase - applicableDeduction);
 
         return irrf;
     }

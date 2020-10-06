@@ -11,6 +11,8 @@ import com.google.gson.Gson;
 import com.jefflopes.calculadorasalarioliquido.data.SalaryInfo;
 import com.jefflopes.calculadorasalarioliquido.utils.LiquidSalaryHelper;
 
+import java.text.DecimalFormat;
+
 public class ResultActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
@@ -23,26 +25,28 @@ public class ResultActivity extends AppCompatActivity {
         String serializedObject = calculateIntent.getStringExtra("SALARY_INFO");
         SalaryInfo salaryInfo = (new Gson()).fromJson(serializedObject, SalaryInfo.class);
 
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+
         LiquidSalaryHelper liquidSalaryHelper = new LiquidSalaryHelper();
 
         salaryInfo = liquidSalaryHelper.calculateLiquidSalary(salaryInfo);
 
         TextView bruteSalaryTextView = findViewById(R.id.bruteSalaryLabel);
-        bruteSalaryTextView.setText("R$" + salaryInfo.bruteSalary);
+        bruteSalaryTextView.setText(getString(R.string.currency_brl_sign) + " " + decimalFormat.format(salaryInfo.bruteSalary));
 
         TextView inssTextView = findViewById(R.id.INSSLabel);
-        inssTextView.setText("R$" + salaryInfo.inss);
+        inssTextView.setText(getString(R.string.currency_brl_sign) + " "  + decimalFormat.format(salaryInfo.inss));
 
         TextView irrfTextView = findViewById(R.id.IRRFLabel);
-        irrfTextView.setText("R$" + salaryInfo.irrf);
+        irrfTextView.setText(getString(R.string.currency_brl_sign) + " "  + decimalFormat.format(salaryInfo.irrf));
 
         TextView otherDiscountsTextView = findViewById(R.id.OtherDiscountsLabel);
-        otherDiscountsTextView.setText("R$" + salaryInfo.otherDeductions);
+        otherDiscountsTextView.setText(getString(R.string.currency_brl_sign) + " "  + decimalFormat.format(salaryInfo.otherDeductions));
 
         TextView liquidSalaryTextView = findViewById(R.id.liquidSalaryLabel);
-        liquidSalaryTextView.setText("R$" + salaryInfo.liquidSalary);
+        liquidSalaryTextView.setText(getString(R.string.currency_brl_sign) + " "  + decimalFormat.format(salaryInfo.liquidSalary));
 
         TextView deductionsTextView = findViewById(R.id.deductionsPercentageLabel);
-        deductionsTextView.setText(salaryInfo.getDeductionsInPercentage() + "%");
+        deductionsTextView.setText(decimalFormat.format(salaryInfo.getDeductionsInPercentage()) + "%");
     }
 }
