@@ -82,5 +82,15 @@ public class LiquidSalaryHelper {
 
         return irrf;
     }
-    public CalculationResult calculateLiquidSalary(Double salary, Integer numDependents, Double otherDiscounts) {}
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public CalculationResult calculateLiquidSalary(Double salary, Integer numDependents, Double otherDiscounts) {
+        Double inss = this.calculateINSS(salary);
+        Double irrf = this.calculateIRRF(salary, inss, numDependents);
+
+        Double liquidSalary = salary - inss - irrf - otherDiscounts;
+        
+        return new CalculationResult(liquidSalary, (liquidSalary/salary) * 100,
+                                    inss, irrf, otherDiscounts);
+    }
 }
