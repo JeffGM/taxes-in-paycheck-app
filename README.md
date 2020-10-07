@@ -55,4 +55,4 @@ As seguintes bibliotecas adicionais foram utilizadas:
 
 \*\* Design implementado como especificado no trabalho prático.
 
-![OptionalText](../master/readme/print1.jpg) ![Optional Text](../master/readme/print2.jpg) ![Optional Text](../master/readme/print3.jpg)
+![OptionalText](../master/readme/print1.jpeg) ![Optional Text](../master/readme/print2.jpeg) ![Optional Text](../master/readme/print3.jpeg)
