@@ -14,6 +14,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
         android:text="@string/calculadora_de_salario_liquido"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
